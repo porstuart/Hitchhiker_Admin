@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hitchhiker_admin/passengerListPage.dart';
-import 'package:hitchhiker_admin/driverListPage.dart';
+import 'package:hitchhiker_admin/driverApproval.dart';
+import 'package:hitchhiker_admin/driverBlacklist.dart';
+import 'package:hitchhiker_admin/passengerApproval.dart';
+import 'package:hitchhiker_admin/passengerBlacklist.dart';
 
 class AdminMainPage extends StatefulWidget {
   const AdminMainPage({Key key}) : super(key: key);
@@ -19,8 +21,10 @@ class _AdminMainPageState extends State<AdminMainPage> {
   void initState() {
     super.initState();
     tabs = [
-      PassengerList(),
-      DriverList(),
+      PassengerApproval(),
+      DriverApproval(),
+      PassengerBlacklist(),
+      DriverBlacklist(),
     ];
   }
 
@@ -41,17 +45,23 @@ class _AdminMainPageState extends State<AdminMainPage> {
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTapped,
         currentIndex: currentTabIndex,
-        //backgroundColor: Colors.blueGrey,
         type: BottomNavigationBarType.fixed,
-
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text("Passenger"),
+            icon: Icon(Icons.check),
+            title: Text("Passenger Approval", style: TextStyle(fontSize: 10)),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.check),
+            title: Text("Driver Approval", style: TextStyle(fontSize: 10)),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.motorcycle),
-            title: Text("Driver"),
+            title: Text("Passenger Blacklist", style: TextStyle(fontSize: 10)),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.motorcycle),
+            title: Text("Driver Blacklist", style: TextStyle(fontSize: 10)),
           ),
         ],
       ),

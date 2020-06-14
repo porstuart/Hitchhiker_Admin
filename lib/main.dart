@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hitchhiker_admin/admin.dart';
 import 'package:hitchhiker_admin/driver.dart';
-import 'package:hitchhiker_admin/mainScreen.dart';
 import 'package:hitchhiker_admin/passenger.dart';
+import 'package:hitchhiker_admin/mainScreen.dart';
 import 'package:toast/toast.dart';
 import 'package:http/http.dart' as http;
 import 'package:progress_dialog/progress_dialog.dart';
@@ -63,14 +63,11 @@ class _LoginPageState extends State<LoginPage> {
           pr.dismiss();
           print(dres);
           print(dres[1]);
-          Admin admin = new Admin(
+          new Admin(
             username: dres[1],
           );
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      AdminMainPage()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AdminMainPage()));
         } else {
           pr.dismiss();
         }
